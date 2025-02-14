@@ -1,0 +1,99 @@
+main() {
+  greetUser();
+  square(10);
+  introducePerson('moiz', 12, city: 'karachi');
+  introducePerson('moiz', 12);
+  print(calculateBMI(weight: 200.2, height: 12.2));
+
+  print(Multiply(10, 2));
+//    applyOperation(1,2,add());
+
+  var opertaion = chooseOperation('multiply');
+  print('result: ${opertaion(6, 2)}');
+
+  print('values ${filterEvenNumbers([1, 2, 3, 4, 5, 6, 7, 8, 9])}');
+
+  List<Map<String, dynamic>> students = [
+    {"name": "Ali", "score": 85},
+    {"name": "Sara", "score": 90},
+    {"name": "John", "score": 78}
+  ];
+
+  print(printTopStudent(students));
+}
+
+//task1
+
+greetUser() {
+  print('hello user');
+}
+
+//task2
+square(int number) {
+  return number * number;
+}
+
+//task3
+
+introducePerson(String name, int age, {String? city}) {
+  print(
+      'My name is $name, I am $age years old, and I live in ${city ?? 'city not specified'}');
+}
+
+//task 4
+
+calculateBMI({required double weight, required double height}) {
+  double BMI = weight / (height * height);
+  return BMI;
+}
+
+//task5
+
+int Function(int, int) Multiply = (a, b) => a * b;
+
+//task6
+
+// int add(int x, int y) => x + y;
+// int multiply(int x, int y) => x * y;
+
+// applyOperation(int a, int b,  Function operation(a,b)){
+// //   print("result : ${operation(a,b)}");
+//   return operation(a,b);
+
+// }
+
+//task7
+
+chooseOperation(String opType) {
+  if (opType == 'add') {
+    return (a, b) => a + b;
+  } else if (opType == 'multiply') {
+    return (a, b) => a * b;
+  } else {
+    return false;
+  }
+}
+
+//task8
+
+filterEvenNumbers(List<int> numbers) {
+  var evenNumber = numbers.where((e) => e % 2 == 0);
+  return evenNumber;
+}
+
+//task9
+printTopStudent(List<Map<String, dynamic>> students) {
+  int score = 0;
+  for (int i = 0; i < students.length; i++) {
+    var singleStudents = students[i];
+    if (score < singleStudents["score"]) {
+      score = singleStudents["score"];
+    }
+  }
+  for (int i = 0; i < students.length; i++) {
+    var singleStudents = students[i];
+    if (score == singleStudents["score"]) {
+      return singleStudents;
+    }
+  }
+}
